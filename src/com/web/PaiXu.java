@@ -394,27 +394,13 @@ class BinaryInsertionSort
 		int mid=(left+right)/2;
 		while(right-left>1)
 		{
-	
+			mid=(left+right)/2;
 			if(dat>=data[mid])
-			{
 				right=mid;
-			}
 			else if(dat<data[mid])
-			{
 				left=mid;
-			}
-				
 		}
-	
-			if(dat>=data[left])
-			{
-				return left;
-			}
-			else if(dat<=data[right])
-				return right+1;
-			else
-				return right;
-		
+		return right;
 		
 	}
 	public void sort()
@@ -423,8 +409,7 @@ class BinaryInsertionSort
 		int index;
 		for(int i=1;i<data.length;i++)
 		{
-			temp=data[i];
-			
+			temp=data[i];		
 			if(temp>=data[0])
 				index=0;
 			else if(temp<=data[i-1])
@@ -432,9 +417,9 @@ class BinaryInsertionSort
 			else
 			index=binartSearch(0,i-1,temp);
 		
-			for(int j=i;j>index;j--)
+			for(int j=i-1;j>=index;j--)
 			{
-				data[j]=data[j-1];
+				data[j+1]=data[j];
 			}
 			data[index]=temp;
 			
