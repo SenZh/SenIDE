@@ -8,10 +8,20 @@ public class PaiXu{
 	public static void main(String[] args) {
 		
 		PaiXu charu=new PaiXu(100000);
+		StackSort stacksort=new StackSort(100);
+		StraightInsertionSort straight=new StraightInsertionSort();
+		BinaryInsertionSort binarysort=new BinaryInsertionSort(20);
+		binarysort.sort();
+		binarysort.print();
+		
+	//	straight.sortAsc();
+	//	straight.print(10);
+	//	stacksort.sort();
+	//	stacksort.print();
 	//	charu.xierpx(2);
 	//	charu.paixu();
 	//	charu.px2fen();
-		charu.simpleChoiceSort();
+	//	charu.simpleChoiceSort();
 	//	charu.print();
 	}
 	public PaiXu(int num)
@@ -207,4 +217,234 @@ public class PaiXu{
 		}
 	}
 
+}
+class StackSort
+{
+	int[] data;
+	public StackSort()
+	{
+		Initialize(100);
+	}
+	public StackSort(int number)
+	{
+		Initialize(number);
+	}
+	
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+		{
+			data[i]=rm.nextInt(number);
+		}
+	}
+	public void print()
+	{
+		for(int i:data)
+		System.out.println(i);
+	}
+	
+	public void makeMiniStack()
+	{
+		for(int i=data.length-1;i>0;i-=2)
+		{
+		
+			   sortStack((i-1)/2,data.length-1);
+		}
+	}
+	public void sortStack(int root,int end)
+	{
+		int index;
+		int last;
+		int temp;		
+		for(int i=root;i*2+1<end;i++)
+		{
+			temp=data[2*i+1];
+			if(temp>data[2*i+2])
+			{
+				data[2*i+1]=data[2*i+2];
+				data[2*i+2]=temp;
+			}
+			temp=data[i];
+			if(temp>data[2*i+1])
+			{
+				data[i]=data[2*i+1];
+				data[2*i+1]=temp;
+			}
+		}
+	}
+	public void sort()
+	{
+		int index;
+		int last;
+		makeMiniStack();
+		long a=System.currentTimeMillis();
+		for(index=data.length-1;index>0;index--)
+		{
+			last=data[index];
+			data[index]=data[0];
+			data[0]=last;
+			sortStack(0, index-1);
+		}
+		long b=System.currentTimeMillis();
+		System.out.println("time  :"+(b-a));
+	}
+}
+class StraightInsertionSort
+{
+	int[] data;
+	public StraightInsertionSort()
+	{
+		Initialize(100);
+	}
+	public StraightInsertionSort(int number)
+	{
+		Initialize(number);
+	}
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+		{
+			data[i]=rm.nextInt(number+100);
+		}
+	}
+	public void sortDesc()
+	{
+		int temp;
+		int j;
+		for(int i=1;i<data.length;i++)
+		{
+			temp=data[i];
+			for(j=i-1;j>=0;j--)
+			{
+				if(data[j]<temp)
+					data[j+1]=data[j];
+				else
+				{
+					
+					break;
+				}
+			}
+			data[j+1]=temp;
+		}
+	}
+	public void sortAsc()
+	{
+		int temp;
+		int j;
+		for(int i=1;i<data.length;i++)
+		{
+			temp=data[i];
+			for(j=i-1;j>=0;j--)
+			{
+				if(data[j]>temp)
+					data[j+1]=data[j];
+				else
+				{
+					
+					break;
+				}
+			}
+			data[j+1]=temp;
+		}
+	}
+	public void print(int number)
+	{
+		for(int i=0;i<data.length;i++)
+		{
+			if((i)%number==0)
+				System.out.println(data[i]);
+			else
+				System.out.print(data[i]+" ");
+		}
+	}
+	public void print()
+	{
+		print(1);
+	}
+	
+}
+class BinaryInsertionSort
+{
+	int[] data;
+	public BinaryInsertionSort()
+	{
+		Initialize(100);
+	}
+	public BinaryInsertionSort(int number)
+	{
+		Initialize(number);
+	}
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+		{
+			data[i]=rm.nextInt(100);
+		}
+	}
+	public int binartSearch(int begin,int end,int dat)
+	{
+		int left=begin;
+		int right=end;
+		int mid=(left+right)/2;
+		while(right-left>1)
+		{
+	
+			if(dat>=data[mid])
+			{
+				right=mid;
+			}
+			else if(dat<data[mid])
+			{
+				left=mid;
+			}
+				
+		}
+	
+			if(dat>=data[left])
+			{
+				return left;
+			}
+			else if(dat<=data[right])
+				return right+1;
+			else
+				return right;
+		
+		
+	}
+	public void sort()
+	{
+		int temp;
+		int index;
+		for(int i=1;i<data.length;i++)
+		{
+			temp=data[i];
+			
+			if(temp>=data[0])
+				index=0;
+			else if(temp<=data[i-1])
+				index=i;
+			else
+			index=binartSearch(0,i-1,temp);
+		
+			for(int j=i;j>index;j--)
+			{
+				data[j]=data[j-1];
+			}
+			data[index]=temp;
+			
+		}
+	}
+	public void print()
+	{
+		for(int i:data)
+		{
+			System.out.println(i);
+		}
+	}
 }
