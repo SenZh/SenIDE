@@ -7,22 +7,9 @@ public class PaiXu{
 	int[] data;
 	public static void main(String[] args) {
 		
-		PaiXu charu=new PaiXu(100000);
-		StackSort stacksort=new StackSort(100);
-		StraightInsertionSort straight=new StraightInsertionSort();
-		BinaryInsertionSort binarysort=new BinaryInsertionSort(20);
-		binarysort.sort();
-		binarysort.print();
-		
-	//	straight.sortAsc();
-	//	straight.print(10);
-	//	stacksort.sort();
-	//	stacksort.print();
-	//	charu.xierpx(2);
-	//	charu.paixu();
-	//	charu.px2fen();
-	//	charu.simpleChoiceSort();
-	//	charu.print();
+		SimpleSelectionSort sss=new SimpleSelectionSort();
+		sss.sort();
+		sss.print();
 	}
 	public PaiXu(int num)
 	{
@@ -433,3 +420,102 @@ class BinaryInsertionSort
 		}
 	}
 }
+
+class ShellSort
+{
+	int[] data;
+	public ShellSort()
+	{
+		Initialize(100);
+	
+	}
+	public ShellSort(int number)
+	{
+		Initialize(number);
+	}
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+			data[i]=rm.nextInt(number+100);
+	}
+	
+	public void sort()
+	{
+		int d=data.length/2;
+		while(d>0)
+		{
+			
+			for(int i=0;i<d;i++)
+			{
+				
+				for(int j=i+d;i+j*d<data.length;j++)
+				{
+					int temp=data[j];
+					int m;
+					for(m=j-d;m>=0;m-=d)
+					{
+						if(data[m]<temp)
+							data[m+d]=data[m];
+						else
+							break;
+					}
+					data[m+d]=temp;
+						
+				}
+			}
+			d=d/2;
+		}
+	}
+	public void print()
+	{
+		for(int i:data)
+			System.out.println(i);
+	}
+	
+}
+class SimpleSelectionSort
+{
+	int[] data;
+	public SimpleSelectionSort()
+	{
+		Initialize(100);
+	}
+	public SimpleSelectionSort(int number)
+	{
+		Initialize(number);
+	}
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+			data[i]=rm.nextInt(number+100);
+	}
+	public void sort()
+	{
+		for(int i=0;i<data.length;i++)
+		{
+			int max=data[i];
+			int index=i;
+			for(int j=i;j<data.length;j++)
+			{
+				if(data[j]>max)
+				{
+					max=data[j];
+					index=j;
+				}
+			}
+			data[index]=data[i];
+			data[i]=max;
+			
+		}
+	}
+	public void print()
+	{
+		for(int i:data)
+			System.out.println(i);
+	}
+}
+
