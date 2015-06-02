@@ -5,12 +5,16 @@ import java.util.Random;
 public class PaiXu{
 	
 	int[] data;
-	public static void main(String[] args) {
-		
-		SimpleSelectionSort sss=new SimpleSelectionSort(10);
-		QuickSort qs=new QuickSort();
-		qs.sort();
-		qs.print();
+	public static void main(String[] args) {	
+		Sort sort=new Sort();
+		PaiXu px=new PaiXu(100);
+		int[] da=new int[px.data.length];
+		for(int i=0;i<da.length;i++)
+		{
+			da[i]=px.data[i];
+		}
+		sort.BinarySort(px.data);
+		px.print();
 	}
 	public PaiXu(int num)
 	{
@@ -26,10 +30,10 @@ public class PaiXu{
 		data=new int[num];	
 		Random rm=new Random(System.currentTimeMillis());
 		for(int i=0;i<data.length;i++)		
-		{	
+		{	if(num<=100)
 			data[i]=rm.nextInt(101);
-		
-		
+			else
+				data[i]=rm.nextInt(num);
 		}
 		
 		
@@ -393,6 +397,7 @@ class BinaryInsertionSort
 	}
 	public void sort()
 	{
+		long a=System.currentTimeMillis();
 		int temp;
 		int index;
 		for(int i=1;i<data.length;i++)
@@ -412,6 +417,8 @@ class BinaryInsertionSort
 			data[index]=temp;
 			
 		}
+		long b=System.currentTimeMillis();
+		System.out.println("time  :"+(b-a));
 	}
 	public void print()
 	{
@@ -621,7 +628,10 @@ class QuickSort
 	}
 	public void sort()
 	{
+		long a=System.currentTimeMillis();
 		ArrayAdjust(0,data.length-1);
+		long b=System.currentTimeMillis();
+		System.out.println("time  :"+(b-a));
 	}
 	public void print()
 	{
@@ -629,6 +639,192 @@ class QuickSort
 		{
 			System.out.println(i);
 		}
+	}
+	
+}
+
+class Sort
+{
+	public void QuickSort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		qs(data,0,data.length-1);
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
+	}
+	private void qs(int[] data,int begin,int end)
+	{
+		if(begin<end)
+		{
+			int temp=data[begin];
+			int i=begin;
+			int j=end;
+			while(i<j)
+			{
+				while(i<j&&data[j]<temp)
+					j--;
+				if(i<j)
+					data[i++]=data[j];
+				while(i<j&&data[i]>=temp)
+					i++;
+				if(i<j)
+					data[j--]=data[i];
+			}
+			data[i]=temp;
+			qs(data,begin,i-1);
+			qs(data,i+1,end);
+		}
+	}
+	private void sis(int[] data,int begin,int end)
+	{
+		for(int i=begin+1;i<end+1;i++)
+		{
+			int temp=data[i];
+			int j;
+			for(j=i;j-1>=0;j--)
+			{
+				if(data[j-1]<temp)
+					data[j]=data[j-1];
+				else
+					break;
+			}
+			data[j]=temp;
+		}
+	}
+	public void StraightInsertionSort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		sis(data,0,data.length-1);
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
+	}
+	public void SimpleSelectionSort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		int max;
+		int index;
+		for(int i=0;i<data.length;i++)
+		{
+			max=data[i];
+			index=i;
+			for(int j=i+1;j<data.length;j++)
+			{
+				if(data[j]>max)
+				{
+					max=data[j];
+					index=j;
+				}
+			}
+			data[index]=data[i];
+			data[i]=max;
+		}
+		
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
+	}
+	public void BubbleSort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		int temp=0;
+		for(int i=0;i<data.length;i++)
+		{
+			for(int j=0;j+1<data.length-i;j++)
+			{
+				if(data[j]<data[j+1])
+				{
+					temp=data[j];
+					data[j]=data[j+1];
+					data[j+1]=temp;
+				}
+			}
+		}
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
+	}
+	public void AdvancedQuickSort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		aqs(data,0,data.length-1);
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
+	}
+	private void aqs(int[] data,int begin,int end)
+	{
+		if(end-begin>17)
+		{
+			int i=begin;
+			int j=end;
+			int temp=data[i];
+			while(i<j)
+			{
+				while(i<j&&data[j]<temp)
+					j--;
+				if(i<j)
+					data[i++]=data[j];
+				while(i<j&&data[i]>=temp)
+					i++;
+				if(i<j)
+					data[j--]=data[i];
+				
+			}
+			data[i]=temp;
+			aqs(data,begin,i-1);
+			aqs(data,i+1,end);
+		}
+		else if(end-begin>1)
+		{
+			sis(data, begin, end);
+		}
+	}
+	private int binarySearch(int[] data,int begin,int end,int value)
+	{
+		int i=begin;
+		int j=end;
+		if(j-i>1)
+		{
+			int mid=(i+j)/2;
+			if(value>data[mid])
+				return binarySearch(data,begin,mid,value);
+			else 
+				return binarySearch(data,mid,end,value); 
+				
+		}
+		else if(i==j)
+		{
+			if(data[i]<value)
+				return i;
+			else 
+				return i+1;
+		}
+		else if(i+1==j)
+		{
+			
+		}
+		else 
+		{
+			System.out.println("error");
+			return 0;
+		}
+	}
+	private void bs(int[] data,int begin,int end)
+	{
+		for(int i=begin+1;i<end+1;i++)
+		{
+			int index=binarySearch(data, begin, i-1, data[i]);
+			int dq=data[i];
+			for(int j=i;j>index;j--)
+			{
+				data[j]=data[j-1];
+			}
+			data[index]=dq;
+		}
+	}
+	public void BinarySort(int[] data)
+	{
+		long a=System.currentTimeMillis();
+		bs(data,0, data.length-1);
+		long b=System.currentTimeMillis();
+		System.out.println("Time:"+(b-a)+"ms");
 	}
 	
 }
