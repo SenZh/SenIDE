@@ -7,9 +7,10 @@ public class PaiXu{
 	int[] data;
 	public static void main(String[] args) {
 		
-		SimpleSelectionSort sss=new SimpleSelectionSort();
-		sss.sort();
-		sss.print();
+		SimpleSelectionSort sss=new SimpleSelectionSort(10);
+		QuickSort qs=new QuickSort();
+		qs.sort();
+		qs.print();
 	}
 	public PaiXu(int num)
 	{
@@ -517,5 +518,118 @@ class SimpleSelectionSort
 		for(int i:data)
 			System.out.println(i);
 	}
+}
+class BubbleSort
+{
+	int[] data;
+	public BubbleSort()
+	{
+		Initialize(100);
+	}
+	public BubbleSort(int number)
+	{
+		Initialize(number);
+	}
+	
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+		{
+			data[i]=rm.nextInt(100+number);
+		}
+	}
+	public void sort()
+	{
+		for(int i=0;i<data.length;i++)
+		{
+			
+			for(int j=0;j<data.length-i-1;j++)
+			{
+				 int temp=data[j];
+				if(data[j+1]>temp)
+				{  
+					data[j]=data[j+1];
+					data[j+1]=temp;
+				}
+			}
+		}
+	}
+	public void print()
+	{
+		for(int i:data)
+		{
+			System.out.println(i);
+		}
+	}
+	
+}
+
+class QuickSort
+{
+
+	int[] data;
+	public QuickSort()
+	{
+		Initialize(100);
+	}
+	public QuickSort(int number)
+	{
+		Initialize(number);
+	}
+	
+	public void Initialize(int number)
+	{
+		data=new int[number];
+		Random rm=new Random();
+		for(int i=0;i<data.length;i++)
+		{
+			data[i]=rm.nextInt(100+number);
+		}
+	}
+	
+	public void ArrayAdjust(int begin,int end)
+	{
+		
+		if(begin<end)
+		{
+			int i=begin;
+			int j=end;
+			int temp=data[i];
+		while(i<j)
+		{	
+			while(data[j]<=temp&&i<j)
+				j--;
+			if(data[j]>temp)
+			{
+				data[i++]=data[j];
+				
+			}
+			while(data[i]>temp&&i<j)
+				i++;
+			if(data[i]<=temp)
+			{
+				data[j--]=data[i];
+			
+			}
+		}
+		data[i]=temp;
+		ArrayAdjust(begin, i-1);
+		ArrayAdjust(i+1, end);
+		}
+	}
+	public void sort()
+	{
+		ArrayAdjust(0,data.length-1);
+	}
+	public void print()
+	{
+		for(int i:data)
+		{
+			System.out.println(i);
+		}
+	}
+	
 }
 
