@@ -23,8 +23,8 @@ public class contextDemo {
 	@SuppressWarnings("unchecked")
 	public String execute()
 	{
-		Map<String, Object> Applation=ActionContext.getContext().getApplication();//读取和保存成功
-		Map<String, Object> Session=ActionContext.getContext().getSession();//读取保存成功
+		Map<String, Object> Applation=ActionContext.getContext().getApplication();//璇诲彇鍜屼繚瀛樻垚鍔�
+		Map<String, Object> Session=ActionContext.getContext().getSession();//璇诲彇淇濆瓨鎴愬姛
 		Map<String, Object> para=ActionContext.getContext().getParameters();
 		Map<String, Object> request=(Map<String, Object>)ActionContext.getContext().get("request");
 		
@@ -34,10 +34,14 @@ public class contextDemo {
 		request.put("requestKey", "value");
 	//	System.out.println(request.get("username"));
 	//	System.out.println(request.get("age"));
-		System.out.println(request.get("requesttest"));//读取失败，估计requestMap是requestParameter的map，而不是Attribute的map
-	//	System.out.println(Session.get("session"));//读取成功
-	//	System.out.println(Applation.get("test"));//读取成功
+		System.out.println(request.get("requesttest"));//璇诲彇澶辫触锛屼及璁equestMap鏄痳equestParameter鐨刴ap锛岃�涓嶆槸Attribute鐨刴ap
+	//	System.out.println(Session.get("session"));//璇诲彇鎴愬姛
+	//	System.out.println(Applation.get("test"));//璇诲彇鎴愬姛
 	//	System.out.println(((String[])para.get("username"))[0]);
+		return "success";
+	}
+	public String add()
+	{
 		return "success";
 	}
 

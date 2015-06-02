@@ -15,7 +15,7 @@ public Demo()
 }
 private void Initialize()
 {
-	User[] user=new User[5000];
+	User[] user=new User[50];
 	
 	String namedataString="qwertyuiopasdfghjklzxcvbnm";
 	
@@ -90,7 +90,7 @@ public void setName(String name) {
 }
 public void print()
 {
-	System.out.println("ID:"+id+" 用户名："+name+" 年龄："+age);
+	System.out.println("ID:"+id+" "+name);
 }
 }
-
+//ssssss

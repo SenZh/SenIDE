@@ -798,7 +798,12 @@ class Sort
 		}
 		else if(i+1==j)
 		{
-			
+			if(value>data[i])
+				return i;
+			else if(value<data[j])
+				return j+1;
+			else
+				return j;
 		}
 		else 
 		{

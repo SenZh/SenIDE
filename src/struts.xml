@@ -4,10 +4,11 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts> 
+ <constant name="struts.enable.DynamicMethodInvocation" value="true" /> <!-- 开启DMI -->
 	<package name="hello" extends="struts-default">
 
-	<action name="login" class="com.web.contextDemo"  method="execute">
-	<result>./jsp/hello.jsp</result>
+	<action name="login" class="com.web.contextDemo">
+	<result>/jsp/hello.jsp</result>
 	</action>
 	
 	</package>
