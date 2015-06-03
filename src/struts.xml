@@ -9,8 +9,9 @@
   <constant name="struts.i18n.encoding" value="utf-8"></constant>
 	<package name="hello" extends="struts-default">
 
-	<action name="login" class="com.web.contextDemo" >
-	<result>/jsp/hello.jsp</result>
+	<action name="login_*" class="com.web.action.UserAction" method="{1}">
+	<result name="success">jsp/hello.jsp</result>
+	<result name="input">index.jsp</result>
 	</action>
 	
 	</package>

@@ -2,8 +2,9 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
+%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -28,12 +29,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	System.out.println(".......");
   %>
   <center>
-    <form action="login" method="post">
+    <form action="login_login" method="post">
     username: <input type="text" name="username" ><br>
+    <s:fielderror fieldName="error"/>
+    <br><br>
     password:<input type="password" name="password">
     
    <input type="submit" value="提交">
     </form>
     </center>
+    <s:debug></s:debug>
   </body>
 </html>
