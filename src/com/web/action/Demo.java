@@ -1,4 +1,4 @@
-package com.web;
+package com.web.action;
 
 import java.util.Random;
 

@@ -32,5 +32,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     request-username:<%=request.getParameter("username") %><br>
    -->   
     request:<%=request.getAttribute("requestKey") %><br> <!-- 读取成功 说明requestMap为 request attributeMap -->
+    <%=request.getParameter("username") %>
   </body>
 </html>

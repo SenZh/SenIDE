@@ -1,4 +1,4 @@
-package com.web;
+package com.web.action;
 
 import java.util.Map;
 
@@ -23,9 +23,9 @@ public class contextDemo {
 	@SuppressWarnings("unchecked")
 	public String execute()
 	{
-		Map<String, Object> Applation=ActionContext.getContext().getApplication();//璇诲彇鍜屼繚瀛樻垚鍔�
-		Map<String, Object> Session=ActionContext.getContext().getSession();//璇诲彇淇濆瓨鎴愬姛
+		Map<String, Object> Applation=ActionContext.getContext().getApplication();//璇诲彇鍜屼繚瀛樻垚鍔�?		Map<String, Object> Session=ActionContext.getContext().getSession();//璇诲彇淇濆瓨鎴愬�?
 		Map<String, Object> para=ActionContext.getContext().getParameters();
+		Map<String, Object> Session=ActionContext.getContext().getSession();
 		Map<String, Object> request=(Map<String, Object>)ActionContext.getContext().get("request");
 		
 		Applation.put("ApplationKey", "value");

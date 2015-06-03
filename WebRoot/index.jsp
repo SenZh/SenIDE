@@ -28,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	System.out.println(".......");
   %>
   <center>
-    <form action="login!execute" method="post">
+    <form action="login" method="post">
     username: <input type="text" name="username" ><br>
-    age:<input type="text" name="age"><br>
+    password:<input type="password" name="password">
     
    <input type="submit" value="提交">
     </form>
