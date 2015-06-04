@@ -7,9 +7,13 @@
  <constant name="struts.enable.DynamicMethodInvocation" value="false" /> <!-- DMI -->
   <constant name="struts.devMode" value="true" />
   <constant name="struts.i18n.encoding" value="utf-8"></constant>
-	<package name="hello" extends="struts-default">
-
+	<package name="hello" extends="struts-default" namespace="/">
+	<default-action-ref name="default"></default-action-ref>
+	<action name="default">
+	<result>jsp/hello.jsp</result>
+	</action>
 	<action name="login_*" class="com.web.action.UserAction" method="{1}">
+	
 	<result name="success">jsp/hello.jsp</result>
 	<result name="input">index.jsp</result>
 	</action>

@@ -1,5 +1,7 @@
 package com.web.action;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
