@@ -22,21 +22,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <%
-  	session.setAttribute("session", "sessionValue");
-  	request.setAttribute("requesttest", "test");
-  	application.setAttribute("test", "test");
-  	System.out.println(".......");
-  %>
   <center>
-    <form action="login_login" method="post">
-    username: <input type="text" name="username" ><br>
-    <s:fielderror fieldName="error"/>
-    <br><br>
-    password:<input type="password" name="password">
-    
-   <input type="submit" value="提交">
-    </form>
+  <h1 align="center">登录</h1>
+  <hr style="color:red">
+  <form method="post" action="login.action">
+  用户名:<input type="text" name="user.username"><br>
+  密码:<input type="password" name="user.password"><br>
+  <input type="submit" value="提交">
+  </form>
     </center>
     <s:debug></s:debug>
   </body>

@@ -12,8 +12,7 @@
 	<action name="default">
 	<result>jsp/hello.jsp</result>
 	</action>
-	<action name="login_*" class="com.web.action.UserAction" method="{1}">
-	
+	<action name="login" class="com.web.action.UserAction">
 	<result name="success">jsp/hello.jsp</result>
 	<result name="input">index.jsp</result>
 	</action>

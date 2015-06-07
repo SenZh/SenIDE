@@ -1,10 +1,10 @@
 <%@page import="org.apache.catalina.Session"%>
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -25,13 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1 align="center">用户信息</h1> <hr style="border-style:dashed;border-color:#665533"><br> 
-<!--    para:<%=request.getAttribute("paraKey") %><br>
-  	para-username:${parameters.username[0]}<br>
-  	para-age:${parameters.age[0]}<br>
-  	
-    request-username:<%=request.getParameter("username") %><br>
-   -->   
-    request:<%=request.getAttribute("requestKey") %><br> <!-- 读取成功 说明requestMap为 request attributeMap -->
-    <%=request.getParameter("username") %>
+	<%=request.getParameter("user.username") %>
+	<s:property value="user.username" /> 
+	<s:debug></s:debug>
   </body>
 </html>
