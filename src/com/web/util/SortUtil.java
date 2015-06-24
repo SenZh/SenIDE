@@ -1,27 +1,19 @@
-package com.web.action;
+package com.web.util;
 
 import java.util.Random;
 
-public class PaiXu{
+public class SortUtil{
 	
 	int[] data;
 	public static void main(String[] args) {	
-		Sort sort=new Sort();
-		PaiXu px=new PaiXu(100);
-		int[] da=new int[px.data.length];
-		for(int i=0;i<da.length;i++)
-		{
-			da[i]=px.data[i];
-		}
-		sort.BinarySort(px.data);
-		px.print();
+
 	}
-	public PaiXu(int num)
+	public SortUtil(int num)
 	{
 		Initialied(num);
 	}
 	
-	public PaiXu()
+	public SortUtil()
 	{
 		Initialied(100);
 	}

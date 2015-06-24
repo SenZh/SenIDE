@@ -8,14 +8,20 @@
   <constant name="struts.devMode" value="true" />
   <constant name="struts.i18n.encoding" value="utf-8"></constant>
 	<package name="hello" extends="struts-default" namespace="/">
-	<default-action-ref name="default"></default-action-ref>
-	<action name="default">
+	<default-action-ref name="default" ></default-action-ref>
+	<action name="default" class="com.web.action.UserAction">
 	<result>jsp/hello.jsp</result>
 	</action>
 	<action name="login" class="com.web.action.UserAction">
 	<result name="success">jsp/hello.jsp</result>
 	<result name="input">index.jsp</result>
-	</action>
-	
+	</action>	
 	</package>
+	
+<package name="admin" extends="struts-default" namespace="/admin">
+<default-action-ref name="index"></default-action-ref>
+<action name="index">
+<result>/jsp/hello.jsp</result>
+</action>
+		</package>
 </struts>

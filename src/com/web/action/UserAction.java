@@ -20,6 +20,7 @@ public class UserAction extends ActionSupport{
 	}
 	public String execute()
 	{
+		
 		System.out.println(user.getUsername());
 		return SUCCESS;
 	}
