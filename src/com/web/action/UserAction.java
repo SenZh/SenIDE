@@ -1,7 +1,5 @@
 package com.web.action;
 
-import java.io.File;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.web.model.User;
 

@@ -180,6 +180,7 @@ public class SortUtil{
 		for(int i=0;i<data.length;i++)
 		{
 			int index=i;
+			@SuppressWarnings("unused")
 			int temp=data[i];
 			for(int j=i+1;j<data.length;j++)
 			{
@@ -239,8 +240,6 @@ class StackSort
 	}
 	public void sortStack(int root,int end)
 	{
-		int index;
-		int last;
 		int temp;		
 		for(int i=root;i*2+1<end;i++)
 		{

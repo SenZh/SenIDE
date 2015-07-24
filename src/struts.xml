@@ -23,5 +23,7 @@
 <action name="index">
 <result>/jsp/hello.jsp</result>
 </action>
+
 		</package>
+
 </struts>
